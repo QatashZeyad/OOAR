@@ -14,18 +14,6 @@ public class AOETower : Tower
 
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Hurts the neartest AI
     protected override void Shoot()
     {
