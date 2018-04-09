@@ -20,8 +20,6 @@ public abstract class Tower : MonoBehaviour {
         get { return upgradeCosts[upgradeLevel]; }
     }
 
-    private Vector3 position;
-
     // Create a tower
     public Tower(int[] upgradeCosts, Vector3[] upgradeStats)
     {
