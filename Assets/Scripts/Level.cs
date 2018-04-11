@@ -48,6 +48,7 @@ public class Level : MonoBehaviour {
             print(pathPoints[0]);
             GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, pathPoints[0].transform.rotation);
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
+            bot.transform.Rotate(180, 0, 0);
         }
     }
 
