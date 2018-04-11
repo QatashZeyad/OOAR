@@ -46,18 +46,24 @@ public class Level : MonoBehaviour {
         if (++counter % 120 == 0)
         {
             print(pathPoints[0]);
-            GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, new Quaternion(0, 0, 0, 0));
+            GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, pathPoints[0].transform.rotation);
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
         }
     }
 
+    // Gets the starting point
+    public GameObject GetStartPath()
+    {
+        return pathPoints[0];
+    }
+
     // Gets the next point on the path given the previous one
-    public Vector3 GetNextPoint(Vector3 prePoint)
+    public GameObject GetNextPath(Vector3 prePoint)
     {
         for (int i = 0; i < pathPoints.Length - 1; i++)
             if (pathPoints[i].Equals(prePoint))
-                return pathPoints[i + 1].transform.position;
-        return pathPoints[pathPoints.Length - 1].transform.position;
+                return pathPoints[i + 1];
+        return pathPoints[pathPoints.Length - 1];
     }
 
     // Gets the closest AI bot to the given point in the given range (null if none)
