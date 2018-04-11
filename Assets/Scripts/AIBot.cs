@@ -20,8 +20,10 @@ public class AIBot : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        
-	}
+        Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
+        nextPath = level.GetNextPath(level.GetStartPath().transform.position);
+        RotateForward();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,19 +31,21 @@ public class AIBot : MonoBehaviour {
         // Make sure the bot has a path
         if (nextPath == null)
         {
-            Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
-            nextPath = level.GetNextPath(level.GetStartPath().transform.position);
-            RotateForward();
+            
         }
-        print((this.transform.position - nextPath.transform.position).sqrMagnitude);
-        print(marginError);
-        print((this.transform.position - nextPath.transform.position).sqrMagnitude <= marginError);
 
         // Move and rotate the bot
         if ((this.transform.position - nextPath.transform.position).sqrMagnitude <= marginError)
         {
             Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
             nextPath = level.GetNextPath(nextPath.transform.position);
+
+            // If at end of path hurt colony and die
+            if (nextPath == null)
+            {
+                level.HurtColony(strength);
+                Destroy(gameObject);
+            }
             RotateForward();
         }
         else

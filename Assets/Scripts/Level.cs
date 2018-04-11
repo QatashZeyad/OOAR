@@ -43,7 +43,7 @@ public class Level : MonoBehaviour {
     private int counter = 0;
 	// Update is called once per frame
 	void Update () {
-        if (++counter % 120 == 0 && counter < 200)
+        if (++counter % 120 == 0)
         {
             GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, pathPoints[0].transform.rotation);
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
@@ -63,7 +63,7 @@ public class Level : MonoBehaviour {
         for (int i = 0; i < pathPoints.Length - 1; i++)
             if (pathPoints[i].transform.position.x == prePoint.x && pathPoints[i].transform.position.y == prePoint.y && prePoint.z == pathPoints[i].transform.position.z)
                 return pathPoints[i + 1];
-        return pathPoints[pathPoints.Length - 1];
+        return null;
     }
 
     // Gets the closest AI bot to the given point in the given range (null if none)
