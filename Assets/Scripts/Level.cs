@@ -17,7 +17,7 @@ public class Level : MonoBehaviour {
     private List<GameObject> bots;
 
     // The Points of the path of the level
-    private Vector3[] pathPoints;
+    private GameObject[] pathPoints;
 
     // Property Money
     public int Money
@@ -31,9 +31,9 @@ public class Level : MonoBehaviour {
 
         // Get all the path points
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-        pathPoints = new Vector3[paths.Length];
+        pathPoints = new GameObject[paths.Length];
         foreach (GameObject path in paths)
-            pathPoints[path.GetComponent<Path>().pathNumber] = path.transform.position;
+            pathPoints[path.GetComponent<Path>().pathNumber] = path;
         
         // Initialize variables
         bots = new List<GameObject>();
@@ -46,7 +46,7 @@ public class Level : MonoBehaviour {
         if (++counter % 120 == 0)
         {
             print(pathPoints[0]);
-            GameObject bot = Instantiate(basicBot, pathPoints[0], new Quaternion(0, 0, 0, 0));
+            GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, new Quaternion(0, 0, 0, 0));
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
         }
     }
@@ -56,8 +56,8 @@ public class Level : MonoBehaviour {
     {
         for (int i = 0; i < pathPoints.Length - 1; i++)
             if (pathPoints[i].Equals(prePoint))
-                return pathPoints[i + 1];
-        return pathPoints[pathPoints.Length - 1];
+                return pathPoints[i + 1].transform.position;
+        return pathPoints[pathPoints.Length - 1].transform.position;
     }
 
     // Gets the closest AI bot to the given point in the given range (null if none)
