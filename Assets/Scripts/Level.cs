@@ -7,6 +7,9 @@ public class Level : MonoBehaviour {
     // The bots of the level
     public GameObject basicBot;
 
+    // The players money
+    private int money;
+
     // The Health of the colony
     private int colonyHealth;
 
@@ -15,6 +18,13 @@ public class Level : MonoBehaviour {
 
     // The Points of the path of the level
     private Vector3[] pathPoints;
+
+    // Property Money
+    public int Money
+    {
+        get { return money; }
+        set { money = value; }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -33,8 +43,12 @@ public class Level : MonoBehaviour {
     private int counter = 0;
 	// Update is called once per frame
 	void Update () {
-		if(++counter % 120 == 0)
-            Instantiate(basicBot, pathPoints[0], new Quaternion(0, 0, 0, 0));
+        if (++counter % 120 == 0)
+        {
+            print(pathPoints[0]);
+            GameObject bot = Instantiate(basicBot, pathPoints[0], new Quaternion(0, 0, 0, 0));
+            bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
+        }
     }
 
     // Gets the next point on the path given the previous one

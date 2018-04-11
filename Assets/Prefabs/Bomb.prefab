@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114320494714390572}
   - component: {fileID: 135769567777585450}
   - component: {fileID: 54081817709585316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8ff5ab9147d724bb7ced84c4a6ceae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blastRadius: 0
 --- !u!135 &135365906266417888
 SphereCollider:
   m_ObjectHideFlags: 1
