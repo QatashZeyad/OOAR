@@ -16,14 +16,22 @@ public class AIBot : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
-        nextPath = level.GetNextPath(level.GetStartPath().transform.position);
-        RotateForward();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if ((this.transform.position - nextPath.transform.position).sqrMagnitude > float.Epsilon)
+
+        // Make sure the bot has a path
+        if (nextPath == null)
+        {
+            Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
+            nextPath = level.GetNextPath(level.GetStartPath().transform.position);
+            RotateForward();
+        }
+        print(this.transform.position);
+        // Move and rotate the bot
+        if ((this.transform.position - nextPath.transform.position).sqrMagnitude <= float.Epsilon)
         {
             Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
             nextPath = level.GetNextPath(nextPath.transform.position);
@@ -32,6 +40,7 @@ public class AIBot : MonoBehaviour {
         else
         {
             Vector3 newPostion = Vector3.MoveTowards(GetComponent<Rigidbody>().position, nextPath.transform.position, Time.deltaTime / speed);
+            print(newPostion);
             GetComponent<Rigidbody>().MovePosition(newPostion);
         }
 	}
