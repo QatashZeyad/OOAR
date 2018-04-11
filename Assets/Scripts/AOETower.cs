@@ -4,20 +4,55 @@ using UnityEngine;
 
 public class AOETower : Tower
 {
-    // Tower Stats
-    private static int[] UPGRADE_COSTS = new int[] { };
-    private static Vector3[] UPGRADE_STATS = new Vector3[] { };
+	// Stats of tower
+	private int fireRate;
+	private int strength;
+	private int fireCooldown;
+	private int range;
 
-    // Create a AOE Tower
-    public AOETower() : base(UPGRADE_COSTS, UPGRADE_STATS)
-    {
+	// Cost of towers upgrades and the stats
+	private int[] upgradeCosts;
+	private Vector3[] upgradeStats;
+	private int upgradeLevel;
 
-    }
+	// Tower Stats
+	private static int[] UPGRADE_COSTS = new int[] { };
+	private static Vector3[] UPGRADE_STATS = new Vector3[] { };
 
-    // Hurts the neartest AI
-    protected override void Shoot()
-    {
+	// Create a AOE Tower
+	public AOETower() : base(UPGRADE_COSTS, UPGRADE_STATS)
+	{
 
-    }
+	}
+
+	// Hurts the neartest AI
+	protected override void Shoot()
+	{
+		if (this.fireCooldown == 0)
+		{
+			double closestDistance = int.MaxValue;
+			Actor closestEnemy = null;
+			for (Actor n:Enemies)
+			{
+				double currentDistance = Math.Abs(Vector3.Distance(this.transform.position, n.transform.position));
+				if (currentDistance < closestDistance)
+				{
+					closestEnemy = n;
+					closestDistance = currentDistance;
+				}
+			}
+			if (closestEnemy != null && closestDistance <= this.range)
+			{
+				Vector3 launchVector = this.transform.position - closestEnemy.transform.position;
+				this.launchBomb(launchVector);
+
+				this.fireCooldown = this.fireRate;
+			}
+		}
+		else
+		{
+			this.fireCooldown--;
+		}
+	}
 
 }
