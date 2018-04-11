@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class MeleeTower : Tower {
 
-	// Tower Stats
-	private static int[] UPGRADE_COSTS = new int[] { };
-	private static Vector3[] UPGRADE_STATS = new Vector3[] { };
-
-	// Create a Melee Tower
-	public MeleeTower() : base(UPGRADE_COSTS, UPGRADE_STATS)
-	{
-
-	}
-
 	// Hurts the neartest AI
-	protected override void Shoot()
-	{
+	protected override void Shoot(GameObject target)
+	{/*
 		if (this.fireCooldown == 0)
 		{
 			double closestDistance = int.MaxValue;
@@ -40,7 +30,7 @@ public class MeleeTower : Tower {
 		else
 		{
 			this.fireCooldown--;
-		}
+		}*/
 	}
 
 }

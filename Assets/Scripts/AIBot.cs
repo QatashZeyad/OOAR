@@ -2,23 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AIBot : MonoBehaviour {
+public class AIBot : MonoBehaviour {
 
     // Stats of AI bot
-    private int health;
-    private int speed;
-    private int strength;
+    public int health;
+    public int speed;
+    public int strength;
 
     // Variable used for path finding
     private Vector3 nextPoint;
-
-    // Create a tower
-    public AIBot(int health, int speed, int strength)
-    {
-        this.health = health;
-        this.speed = speed;
-        this.strength = strength;
-    }
     
 	// Use this for initialization
 	void Start () {
