@@ -43,7 +43,7 @@ public class Level : MonoBehaviour {
     private int counter = 0;
 	// Update is called once per frame
 	void Update () {
-        if (++counter % 120 == 0)
+        if (++counter % 120 == 0 && counter < 200)
         {
             GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, pathPoints[0].transform.rotation);
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);

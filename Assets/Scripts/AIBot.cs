@@ -10,6 +10,10 @@ public class AIBot : MonoBehaviour {
     public int strength;
     public int killValue;
 
+
+    // Margin of error for positions
+    private float marginError = 0.00000000001f;
+
     // Variable used for path finding
     private GameObject nextPath;
     
@@ -29,9 +33,12 @@ public class AIBot : MonoBehaviour {
             nextPath = level.GetNextPath(level.GetStartPath().transform.position);
             RotateForward();
         }
-        print(this.transform.position);
+        print((this.transform.position - nextPath.transform.position).sqrMagnitude);
+        print(marginError);
+        print((this.transform.position - nextPath.transform.position).sqrMagnitude <= marginError);
+
         // Move and rotate the bot
-        if ((this.transform.position - nextPath.transform.position).sqrMagnitude <= float.Epsilon)
+        if ((this.transform.position - nextPath.transform.position).sqrMagnitude <= marginError)
         {
             Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
             nextPath = level.GetNextPath(nextPath.transform.position);
@@ -40,7 +47,6 @@ public class AIBot : MonoBehaviour {
         else
         {
             Vector3 newPostion = Vector3.MoveTowards(GetComponent<Rigidbody>().position, nextPath.transform.position, Time.deltaTime / speed);
-            print(newPostion);
             GetComponent<Rigidbody>().MovePosition(newPostion);
         }
 	}
