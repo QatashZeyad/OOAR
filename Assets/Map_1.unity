@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3733,6 +3733,7 @@ GameObject:
   - component: {fileID: 1393103474}
   - component: {fileID: 1393103473}
   - component: {fileID: 1393103472}
+  - component: {fileID: 1393103477}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: Untagged
@@ -3820,6 +3821,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1393103477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1393103471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa422015d4fbf7438186af3d78d8ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicBot: {fileID: 1653816597175946, guid: 24712021eb60f8a4582c655be560b1ea, type: 2}
 --- !u!1 &1460872896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4994,7 +5007,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-  m_TileRefreshArray: []
 --- !u!1001 &1945771030
 Prefab:
   m_ObjectHideFlags: 0
