@@ -9,7 +9,7 @@ public class Bomb : Bullet {
 
     protected override void OnHitAI(GameObject aIHit)
     {
-        GameObject[] bots = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>().GetAllAIWithin(this.trasform.postion, this.blastRadius);
+        GameObject[] bots = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>().GetAllAIWithin(this.transform.position, this.blastRadius);
         foreach (GameObject bot in bots)
             bot.GetComponent<AIBot>().Hurt(this.strength);
         Destroy(gameObject);
