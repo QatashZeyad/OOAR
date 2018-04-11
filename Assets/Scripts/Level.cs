@@ -4,40 +4,91 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
+    // The bots of the level
+    public GameObject basicBot;
+
     // The Health of the colony
     private int colonyHealth;
 
     // The AIBots on the current field
-    private AIBot[] bots;
+    private List<GameObject> bots;
 
     // The Points of the path of the level
     private Vector3[] pathPoints;
 
 	// Use this for initialization
 	void Start () {
-		
+
+        // Get all the path points
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        pathPoints = new Vector3[paths.Length];
+        foreach (GameObject path in paths)
+            pathPoints[path.GetComponent<Path>().pathNumber] = path.transform.position;
+        
+        // Initialize variables
+        bots = new List<GameObject>();
 	}
-	
+
+
+    private int counter = 0;
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		if(++counter % 120 == 0)
+            Instantiate(basicBot, pathPoints[0], new Quaternion(0, 0, 0, 0));
+    }
 
     // Gets the next point on the path given the previous one
     public Vector3 GetNextPoint(Vector3 prePoint)
     {
-        return new Vector3(0, 0, 0);
+        for (int i = 0; i < pathPoints.Length - 1; i++)
+            if (pathPoints[i].Equals(prePoint))
+                return pathPoints[i + 1];
+        return pathPoints[pathPoints.Length - 1];
     }
 
-    // Gets the closest AI bot to the given point in the given range
-    public AIBot GetClosestAI(Vector3 center, Vector3 radius)
+    // Gets the closest AI bot to the given point in the given range (null if none)
+    public GameObject GetClosestAI(Vector3 center, float radius)
     {
-        return null;
+        float closestDistance = -1;
+        GameObject closestBot = null;
+        foreach (GameObject bot in bots)
+        {
+            float currentDistance = Mathf.Abs(Vector3.Distance(bot.transform.position, center));
+            if (closestBot == null || currentDistance < closestDistance)
+            {
+                closestBot = bot;
+                closestDistance = currentDistance;
+            }
+        }
+        if (closestDistance <= radius)
+            return closestBot;
+        else
+            return null;
+        
+    }
+
+
+    // Gets the AI with in the given circle
+    public GameObject[] GetAllAIWithin(Vector3 center, float radius)
+    {
+        List<GameObject> foundAI = new List<GameObject>();
+        foreach (GameObject bot in bots)
+        {
+            float distance = Mathf.Abs(Vector3.Distance(bot.transform.position, center));
+            if (distance <= radius)
+                foundAI.Add(bot);
+        }
+        return foundAI.ToArray();
     }
 
     // Hurts the colony by the given damage
     public void HurtColony(int damage)
     {
-        
+        if (colonyHealth > 0)
+            colonyHealth--;
+        else
+        {
+            // TODO: GAME OVER
+        }
     }
 }
