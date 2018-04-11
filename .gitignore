@@ -1,11 +1,11 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Bb]uilds/
-/[Ll]ibrary/
+Temp/
+obj/
+Build
+/Builds/
+/Library/
 sysinfo.txt
 *.stackdump
 /Assets/AssetStoreTools*
@@ -44,4 +44,3 @@ ehthumbs.db
 /Library/ShaderCache/
 /Library/metadata/
 /Library/ScriptAssemblies/
-/Library/assetDatabase3
