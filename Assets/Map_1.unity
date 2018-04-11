@@ -6380,6 +6380,11 @@ Prefab:
       propertyPath: m_TagString
       value: Path
       objectReference: {fileID: 0}
+    - target: {fileID: 114885526939667120, guid: cf3f562a02b934b86b5d81e3f254fd6d,
+        type: 2}
+      propertyPath: pathNumber
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf3f562a02b934b86b5d81e3f254fd6d, type: 2}
   m_IsPrefabParent: 0
