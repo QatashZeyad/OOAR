@@ -61,7 +61,7 @@ public class Level : MonoBehaviour {
     public GameObject GetNextPath(Vector3 prePoint)
     {
         for (int i = 0; i < pathPoints.Length - 1; i++)
-            if (pathPoints[i].Equals(prePoint))
+            if (pathPoints[i].transform.position.x == prePoint.x && pathPoints[i].transform.position.y == prePoint.y && prePoint.z == pathPoints[i].transform.position.z)
                 return pathPoints[i + 1];
         return pathPoints[pathPoints.Length - 1];
     }
