@@ -66,6 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4824381238510134}
+  - component: {fileID: 114563308230384744}
   m_Layer: 0
   m_Name: SingleTargetTower
   m_TagString: Untagged
@@ -169,3 +170,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039117801247394}
   m_Mesh: {fileID: 4300000, guid: 24b88ce8f680a4059b3b0cf19ea511e5, type: 3}
+--- !u!114 &114563308230384744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492409944383998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d269748b17686834aa650dde0b81e580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCosts: 
+  upgradeStats: []
+  upgrade1Mesh: {fileID: 4300000, guid: 6700837bbbdd445439e213dd547243d6, type: 3}
+  upgrade2Mesh: {fileID: 4300000, guid: 834b54dd96ede48fe9063ded350e5661, type: 3}
+  projectile: {fileID: 1091908808387258, guid: c50353daf3629234eb640abb93082a2c, type: 2}

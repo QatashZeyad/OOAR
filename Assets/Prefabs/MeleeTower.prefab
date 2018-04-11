@@ -49,6 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4705602175438324}
+  - component: {fileID: 114530863334550432}
   m_Layer: 0
   m_Name: MeleeTower
   m_TagString: Untagged
@@ -169,3 +170,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676983698991708}
   m_Mesh: {fileID: 4300000, guid: c1acd2260443745b7a985f38de626ecd, type: 3}
+--- !u!114 &114530863334550432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522753628965766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb668df9cceace4e95e4b5adde366b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCosts: 
+  upgradeStats: []
+  upgrade1Mesh: {fileID: 4300000, guid: 45d299b1c02ee497d836610a89a07eee, type: 3}
+  upgrade2Mesh: {fileID: 4300000, guid: 1be0b6127fb1e47c29dc414654fa97d8, type: 3}
+  projectile: {fileID: 0}
