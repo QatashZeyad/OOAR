@@ -9,10 +9,14 @@ public class LookingAt : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+
+    int counter = 0;
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = "Looking at: "+GetLookAt().name;
+        if (GetLookAt() != null)
+            GetComponent<Text>().text = "Looking at: "+GetLookAt().name+":"+counter++;
+        else
+            GetComponent<Text>().text = "Looking at: "+ counter++;
     }
 
     // Get what the camera is looking at
@@ -20,7 +24,9 @@ public class LookingAt : MonoBehaviour {
     {
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit);
-        print(hit.collider.gameObject.name);
-        return hit.collider.gameObject;
+        if (hit.collider != null)
+            return hit.collider.gameObject;
+        else
+            return null;
     }
 }
