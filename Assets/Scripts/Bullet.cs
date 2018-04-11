@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     // strength of the Bullet 
 
-    private Vector3 strength;
+    private int strength;
 
 
     // Use this for initialization
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         // TODO: CHECK FOR AI AND HANDLE 
-        GameObject objectHit = collision.collider;
+        GameObject objectHit = collision.collider.gameObject;
         if ( objectHit.GetComponent < AIBot> ()!= null)
             OnHitAI(objectHit);
     }

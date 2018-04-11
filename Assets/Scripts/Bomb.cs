@@ -9,8 +9,7 @@ public class Bomb : Bullet {
 
     protected override void OnHitAI(GameObject aIHit)
     {
-        Camera.main.GetComponent<Level>().GetAllAiWithin(this.trasform.postion,this.blastRadius);
-
+        Camera.main.GetComponent<Level>().GetAllAIWithin(this.transform.position,this.blastRadius);
         Destroy(gameObject);
     }
    
