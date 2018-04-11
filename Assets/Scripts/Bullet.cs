@@ -22,13 +22,18 @@ public class Bullet : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         // TODO: CHECK FOR AI AND HANDLE 
-
+        GameObject objectHit = collision.collider;
+        if ( objectHit.GetComponent < AIBot> ()!= null)
+            OnHitAI(objectHit);
     }
 
     // when bullet hits AI
 
-    protected virtual void OnHitAI()
+    protected virtual void OnHitAI(GameObject aIHit)
     {
-       
+
+        aIHit.GetComponent<AIBot> ().Hurt(strength);
+        Destroy(gameObject);
+
     }
 }
