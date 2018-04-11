@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     // strength of the Bullet 
 
-    private int strength;
+    protected int strength;
 
 
     // Use this for initialization
