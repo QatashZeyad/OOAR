@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour {
     {
         // TODO: CHECK FOR AI AND HANDLE 
         GameObject objectHit = collision.collider.gameObject;
-        if ( objectHit.GetComponent < AIBot> ()!= null)
+        if ( objectHit.GetComponent<AIBot>()!= null)
             OnHitAI(objectHit);
     }
 
