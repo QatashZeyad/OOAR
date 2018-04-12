@@ -53,8 +53,8 @@ public class Tower : MonoBehaviour {
 
     }
 
-	// Upgrade the current tower
-	protected void Upgrade()
+    // Upgrade the current tower
+    protected void Upgrade()
 	{
 		upgradeLevel++;
 		fireRate = (int)upgradeStats[upgradeLevel].x;
