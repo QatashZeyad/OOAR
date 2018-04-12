@@ -49,14 +49,14 @@ public class Level : MonoBehaviour {
         for (int i=0;i<pathCoords.Length-1;i++)
         {
             // Find the width height and length of the current segment
-            float width = pathCoords[i].x - pathCoords[i + 1].x,
-                    height = pathCoords[i].z - pathCoords[i + 1].z,
+            float width = pathCoords[i+1].x - pathCoords[i].x,
+                    height = pathCoords[i+1].z - pathCoords[i].z,
                     length = Mathf.Sqrt(width*width+height*height);
 
             // Loop until reach the end of the segment getting all the points
             float curX = pathCoords[i].x,
                     curZ = pathCoords[i].z;
-            for (int j = 0; j < length / tileSize - 1; j++)
+            for (int j = 0; j < length / tileSize; j++)
             {
                 points.Add(new Vector2(curX, curZ));
                 path = Instantiate(pathObject, new Vector3(curX, 0, curZ), Quaternion.Euler(0, 0, 0));
