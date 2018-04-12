@@ -174,4 +174,15 @@ public class Level : MonoBehaviour {
             // TODO: GAME OVER
         }
     }
+
+    // Get what the camera is looking at
+    public static GameObject GetLookAt()
+    {
+        RaycastHit hit;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit);
+        if (hit.collider != null)
+            return hit.collider.gameObject;
+        else
+            return null;
+    }
 }
