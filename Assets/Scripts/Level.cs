@@ -29,7 +29,7 @@ public class Level : MonoBehaviour {
     private List<GameObject> bots;
 
     // The Points of the path of the level
-    private GameObject[] pathPoints;
+    private List<GameObject> pathPoints;
 
     // Property Money
     public int Money
@@ -43,7 +43,10 @@ public class Level : MonoBehaviour {
 
         // Get all the path points
         List<Vector2> points = new List<Vector2>();
-        for(int i=0;i<pathCoords.Length-1;i++)
+        pathPoints = new List<GameObject>();
+        GameObject path;
+        GameObject map = GameObject.FindGameObjectWithTag("Map");
+        for (int i=0;i<pathCoords.Length-1;i++)
         {
             // Find the width height and length of the current segment
             float width = pathCoords[i].x - pathCoords[i + 1].x,
@@ -52,38 +55,41 @@ public class Level : MonoBehaviour {
 
             // Loop until reach the end of the segment getting all the points
             float curX = pathCoords[i].x,
-                    curY = pathCoords[i].y;
+                    curZ = pathCoords[i].z;
             for (int j = 0; j < length / tileSize - 1; j++)
             {
-                points.Add(new Vector2(curX, curY));
+                points.Add(new Vector2(curX, curZ));
+                path = Instantiate(pathObject, new Vector3(curX, 0, curZ), Quaternion.Euler(0, 0, 0));
+                pathPoints.Add(path);
+                path.transform.SetParent(map.transform);
                 curX += tileSize * width / length;
-                curY += tileSize * height / length;
+                curZ += tileSize * height / length;
             }
         }
         points.Add(new Vector2(pathCoords[pathCoords.Length - 1].x, pathCoords[pathCoords.Length - 1].z));
+        path = Instantiate(pathObject, new Vector3(pathCoords[pathCoords.Length - 1].x, 0, pathCoords[pathCoords.Length - 1].z), Quaternion.Euler(0, 0, 0));
+        pathPoints.Add(path);
+        path.transform.SetParent(map.transform);
 
         // Create all the tiles
-        GameObject map = GameObject.FindGameObjectWithTag("Map");
-        for (int x = 0; x < mapWidth; x++)
+        for (int x = 0; x < mapWidth; x += (int)tileSize)
         {
-            for (int z = 0; z < mapHeight; z++)
+            for (int z = 0; z < mapHeight; z += (int)tileSize)
             {
                 // Check if the current point is a path
                 bool isPath = false;
-                for(int i = 0; i < points.Count && !isPath; i++)
+                for (int i = 0; i < points.Count && !isPath; i++) {
                     if (points[i] == new Vector2(x, z))
                         isPath = true;
-
+                    print(points[i]);
+                    }
+                print("---------");
                 // Place the apporiate tile
-                GameObject tile;
-                if (isPath)
+                if (!isPath)
                 {
-                    tile = Instantiate(pathObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
-                    pathPoints[tile.GetComponent<Path>().pathNumber] = tile;
+                    GameObject tile = Instantiate(tileObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
+                    tile.transform.SetParent(map.transform);
                 }
-                else
-                    tile = Instantiate(tileObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
-                tile.transform.SetParent(map.transform);
 
             }
         }
@@ -113,7 +119,7 @@ public class Level : MonoBehaviour {
     // Gets the next point on the path given the previous one
     public GameObject GetNextPath(Vector3 prePoint)
     {
-        for (int i = 0; i < pathPoints.Length - 1; i++)
+        for (int i = 0; i < pathPoints.Count - 1; i++)
             if (pathPoints[i].transform.position.x == prePoint.x && pathPoints[i].transform.position.y == prePoint.y && prePoint.z == pathPoints[i].transform.position.z)
                 return pathPoints[i + 1];
         return null;

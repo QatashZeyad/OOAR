@@ -1534,7 +1534,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicBot: {fileID: 1653816597175946, guid: 24712021eb60f8a4582c655be560b1ea, type: 2}
-  pathCoords: []
+  pathCoords:
+  - {x: 9, y: 0, z: 7}
+  - {x: 9, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 4}
+  - {x: 7, y: 0, z: 4}
+  - {x: 7, y: 0, z: 6}
+  - {x: 0, y: 0, z: 6}
+  - {x: 0, y: 0, z: 7}
   pathObject: {fileID: 1784602974478916, guid: cf3f562a02b934b86b5d81e3f254fd6d, type: 2}
   tileObject: {fileID: 1873391912022606, guid: d61609940502846c8b20cc0a45a88e7f, type: 2}
   mapWidth: 9

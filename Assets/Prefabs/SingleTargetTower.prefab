@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4528870295094092}
   - component: {fileID: 33832043607289720}
   - component: {fileID: 23364770576973724}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ST_Base_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4320228647006074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4683862024567180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4824381238510134}
   - component: {fileID: 114563308230384744}
-  m_Layer: 0
+  - component: {fileID: 65683126907955262}
+  m_Layer: 10
   m_Name: SingleTargetTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +171,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039117801247394}
   m_Mesh: {fileID: 4300000, guid: 24b88ce8f680a4059b3b0cf19ea511e5, type: 3}
+--- !u!65 &65683126907955262
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492409944383998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114563308230384744
 MonoBehaviour:
   m_ObjectHideFlags: 1

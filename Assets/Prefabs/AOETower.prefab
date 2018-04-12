@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4620851175901964}
   - component: {fileID: 33504465571302416}
   - component: {fileID: 23361432460243314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base AOE Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4227692398303434}
   - component: {fileID: 114178363163637714}
   - component: {fileID: 65754719181296664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AOETower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575414563315798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4818986103398260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
