@@ -18,6 +18,7 @@ public class Level : MonoBehaviour {
     public int mapWidth;
     public int mapHeight;
     public float tileSize;
+    public Vector3 mapOffset;
 
     // The players money
     private int money;
@@ -41,11 +42,15 @@ public class Level : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        // Create a parent of all the paths at the offset
+        GameObject pathParent = new GameObject("Path Parent");
+        pathParent.transform.position = mapOffset;
+        pathParent.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
+
         // Get all the path points
         List<Vector2> points = new List<Vector2>();
         pathPoints = new List<GameObject>();
         GameObject path;
-        GameObject map = GameObject.FindGameObjectWithTag("Map");
         for (int i=0;i<pathCoords.Length-1;i++)
         {
             // Find the width height and length of the current segment
@@ -61,15 +66,16 @@ public class Level : MonoBehaviour {
                 points.Add(new Vector2(curX, curZ));
                 path = Instantiate(pathObject, new Vector3(curX, 0, curZ), Quaternion.Euler(0, 0, 0));
                 pathPoints.Add(path);
-                path.transform.SetParent(map.transform);
+                path.transform.SetParent(pathParent.transform);
                 curX += tileSize * width / length;
                 curZ += tileSize * height / length;
             }
         }
+        // Do the final Point
         points.Add(new Vector2(pathCoords[pathCoords.Length - 1].x, pathCoords[pathCoords.Length - 1].z));
         path = Instantiate(pathObject, new Vector3(pathCoords[pathCoords.Length - 1].x, 0, pathCoords[pathCoords.Length - 1].z), Quaternion.Euler(0, 0, 0));
         pathPoints.Add(path);
-        path.transform.SetParent(map.transform);
+        path.transform.SetParent(pathParent.transform);
 
         // Create all the tiles
         for (int x = 0; x < mapWidth; x += (int)tileSize)
@@ -78,17 +84,15 @@ public class Level : MonoBehaviour {
             {
                 // Check if the current point is a path
                 bool isPath = false;
-                for (int i = 0; i < points.Count && !isPath; i++) {
+                for (int i = 0; i < points.Count && !isPath; i++)
                     if (points[i] == new Vector2(x, z))
                         isPath = true;
-                    print(points[i]);
-                    }
-                print("---------");
+
                 // Place the apporiate tile
                 if (!isPath)
                 {
                     GameObject tile = Instantiate(tileObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
-                    tile.transform.SetParent(map.transform);
+                    tile.transform.SetParent(pathParent.transform);
                 }
 
             }
