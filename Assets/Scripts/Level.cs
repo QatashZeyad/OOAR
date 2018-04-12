@@ -44,8 +44,8 @@ public class Level : MonoBehaviour {
 
         // Create a parent of all the paths at the offset
         GameObject pathParent = new GameObject("Path Parent");
-        pathParent.transform.position = mapOffset;
         pathParent.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
+		pathParent.transform.position = mapOffset;
 
         // Get all the path points
         List<Vector2> points = new List<Vector2>();
