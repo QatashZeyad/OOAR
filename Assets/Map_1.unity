@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 397127303}
   - component: {fileID: 397127302}
   - component: {fileID: 397127308}
+  - component: {fileID: 397127309}
   m_Layer: 0
   m_Name: ImageTarget
   m_TagString: Map
@@ -435,7 +436,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 1987668689}
+  - {fileID: 2100000, guid: 3e3a44dd666794c51ab72bb55aa05783, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,15 +489,15 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: OOAR_1
+  mTrackableName: 1_dollar
   mPreserveChildSize: 1
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/World_1_database.xml
   mExtendedTracking: 1
-  mAspectRatio: 0.786017
+  mAspectRatio: 0.434018
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 0.786017
+  mHeight: 0.434018
 --- !u!4 &397127307
 Transform:
   m_ObjectHideFlags: 0
@@ -537,6 +538,26 @@ MonoBehaviour:
   mapHeight: 10
   tileSize: 1
   mapOffset: {x: -6, y: 0, z: -5}
+--- !u!114 &397127309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397127301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTrackableName: 5_dollars
+  mPreserveChildSize: 0
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/World_1_database.xml
+  mExtendedTracking: 0
+  mAspectRatio: 0.421667
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 0.421667
 --- !u!1 &401387157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1131,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.3930085}
+      m_Extent: {x: 0.5, y: 0, z: 0.2108335}
   m_Shapes:
     vertices: []
     shapes: []
@@ -1163,7 +1184,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf000000006938c9be00000000ffff7f3f000000000000000000000000000000bf000000006938c93e00000000ffff7f3f00000000000000000000803f0000003f000000006938c9be00000000ffff7f3f000000000000803f000000000000003f000000006938c93e00000000ffff7f3f000000000000803f0000803f
+    _typelessdata: 000000bf00000000bde457be000000000000803f000000000000000000000000000000bf00000000bde4573e000000000000803f00000000000000000000803f0000003f00000000bde457be000000000000803f000000000000803f000000000000003f00000000bde4573e000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -1570,31 +1591,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1897984879}
---- !u!21 &1987668689
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: OOAR_1Material
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b4f5ea2a1744a808c6b11915cb813fd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &2021095609
 GameObject:
   m_ObjectHideFlags: 0
