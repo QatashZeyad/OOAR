@@ -7,6 +7,18 @@ public class Level : MonoBehaviour {
     // The bots of the level
     public GameObject basicBot;
 
+    // The coords of the path of the level
+    public Vector3[] pathCoords;
+
+    // The objects of the paths and other tiles
+    public GameObject pathObject;
+    public GameObject tileObject;
+
+    // The size of the tiles and the map
+    public int mapWidth;
+    public int mapHeight;
+    public float tileSize;
+
     // The players money
     private int money;
 
@@ -30,10 +42,51 @@ public class Level : MonoBehaviour {
 	void Start () {
 
         // Get all the path points
-        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-        pathPoints = new GameObject[paths.Length];
-        foreach (GameObject path in paths)
-            pathPoints[path.GetComponent<Path>().pathNumber] = path;
+        List<Vector2> points = new List<Vector2>();
+        for(int i=0;i<pathCoords.Length-1;i++)
+        {
+            // Find the width height and length of the current segment
+            float width = pathCoords[i].x - pathCoords[i + 1].x,
+                    height = pathCoords[i].z - pathCoords[i + 1].z,
+                    length = Mathf.Sqrt(width*width+height*height);
+
+            // Loop until reach the end of the segment getting all the points
+            float curX = pathCoords[i].x,
+                    curY = pathCoords[i].y;
+            for (int j = 0; j < length / tileSize - 1; j++)
+            {
+                points.Add(new Vector2(curX, curY));
+                curX += tileSize * width / length;
+                curY += tileSize * height / length;
+            }
+        }
+        points.Add(new Vector2(pathCoords[pathCoords.Length - 1].x, pathCoords[pathCoords.Length - 1].z));
+
+        // Create all the tiles
+        GameObject map = GameObject.FindGameObjectWithTag("Map");
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int z = 0; z < mapHeight; z++)
+            {
+                // Check if the current point is a path
+                bool isPath = false;
+                for(int i = 0; i < points.Count && !isPath; i++)
+                    if (points[i] == new Vector2(x, z))
+                        isPath = true;
+
+                // Place the apporiate tile
+                GameObject tile;
+                if (isPath)
+                {
+                    tile = Instantiate(pathObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
+                    pathPoints[tile.GetComponent<Path>().pathNumber] = tile;
+                }
+                else
+                    tile = Instantiate(tileObject, new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
+                tile.transform.SetParent(map.transform);
+
+            }
+        }
         
         // Initialize variables
         bots = new List<GameObject>();
