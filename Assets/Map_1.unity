@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1534,6 +1534,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicBot: {fileID: 1653816597175946, guid: 24712021eb60f8a4582c655be560b1ea, type: 2}
+  pathCoords: []
+  pathObject: {fileID: 1784602974478916, guid: cf3f562a02b934b86b5d81e3f254fd6d, type: 2}
+  tileObject: {fileID: 1873391912022606, guid: d61609940502846c8b20cc0a45a88e7f, type: 2}
+  mapWidth: 9
+  mapHeight: 10
+  tileSize: 1
 --- !u!1001 &406532261
 Prefab:
   m_ObjectHideFlags: 0
@@ -7277,7 +7283,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1941365738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1460872897}
@@ -7361,7 +7367,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-  m_TileRefreshArray: []
 --- !u!1001 &1954642833
 Prefab:
   m_ObjectHideFlags: 0
