@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Level : MonoBehaviour {
     public Vector3 mapOffset;
 
     // The players money
+    public Text moneyText;
     private int money;
 
     // The Health of the colony
@@ -100,6 +102,9 @@ public class Level : MonoBehaviour {
         
         // Initialize variables
         bots = new List<GameObject>();
+
+        money = 0;
+        moneyText.text = money.ToString();
 	}
 
 
@@ -111,7 +116,10 @@ public class Level : MonoBehaviour {
             GameObject bot = Instantiate(basicBot, pathPoints[0].transform.position, pathPoints[0].transform.rotation);
             bot.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform);
             bot.transform.Rotate(180, 0, 0);
+            // test it updates
+            // money++;
         }
+        moneyText.text = money.ToString();
     }
 
     // Gets the starting point

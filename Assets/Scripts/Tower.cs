@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,9 +56,14 @@ public class Tower : MonoBehaviour {
     // Upgrade the current tower
     protected void Upgrade()
 	{
-		upgradeLevel++;
-		fireRate = (int)upgradeStats[upgradeLevel].x;
-		strength = (int)upgradeStats[upgradeLevel].y;
-		range = (int)upgradeStats[upgradeLevel].z;
+        Level level = GameObject.FindGameObjectWithTag("Map").GetComponent<Level>();
+        int currmoney = level.Money;
+        if (currmoney >= upgradeCosts[upgradeLevel]){
+            currmoney -= upgradeCosts[upgradeLevel];
+            upgradeLevel++;
+		    fireRate = (int)upgradeStats[upgradeLevel].x;
+		    strength = (int)upgradeStats[upgradeLevel].y;
+		    range = (int)upgradeStats[upgradeLevel].z;
+        }
 	}
 }
