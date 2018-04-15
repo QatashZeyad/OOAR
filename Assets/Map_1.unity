@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: -1826476478, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWorldCenterMode: 0
+  mWorldCenterMode: 3
   mWorldCenter: {fileID: 0}
 --- !u!81 &1393103474
 AudioListener:
