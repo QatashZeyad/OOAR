@@ -3,12 +3,6 @@
 	"EngineAssociation": "4.19",
 	"Category": "",
 	"Description": "",
-	"Plugins": [
-		{
-			"Name": "GoogleARCore",
-			"Enabled": true
-		}
-	],
 	"TargetPlatforms": [
 		"Android",
 		"IOS"
